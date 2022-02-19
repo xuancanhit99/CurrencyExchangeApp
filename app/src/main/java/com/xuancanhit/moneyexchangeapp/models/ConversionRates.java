@@ -5,12 +5,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
 
-
-public class Results {
-
+public class ConversionRates {
+    @SerializedName("USD")
+    @Expose
+    private Double usd;
     @SerializedName("AED")
     @Expose
     private Double aed;
@@ -80,6 +79,9 @@ public class Results {
     @SerializedName("BWP")
     @Expose
     private Double bwp;
+    @SerializedName("BYN")
+    @Expose
+    private Double byn;
     @SerializedName("BZD")
     @Expose
     private Double bzd;
@@ -92,21 +94,18 @@ public class Results {
     @SerializedName("CHF")
     @Expose
     private Double chf;
-    @SerializedName("CLF")
-    @Expose
-    private Double clf;
     @SerializedName("CLP")
     @Expose
     private Double clp;
-    @SerializedName("CNH")
-    @Expose
-    private Double cnh;
     @SerializedName("CNY")
     @Expose
     private Double cny;
     @SerializedName("COP")
     @Expose
     private Double cop;
+    @SerializedName("CRC")
+    @Expose
+    private Double crc;
     @SerializedName("CUP")
     @Expose
     private Double cup;
@@ -146,12 +145,18 @@ public class Results {
     @SerializedName("FKP")
     @Expose
     private Double fkp;
+    @SerializedName("FOK")
+    @Expose
+    private Double fok;
     @SerializedName("GBP")
     @Expose
     private Double gbp;
     @SerializedName("GEL")
     @Expose
     private Double gel;
+    @SerializedName("GGP")
+    @Expose
+    private Double ggp;
     @SerializedName("GHS")
     @Expose
     private Double ghs;
@@ -191,6 +196,9 @@ public class Results {
     @SerializedName("ILS")
     @Expose
     private Double ils;
+    @SerializedName("IMP")
+    @Expose
+    private Double imp;
     @SerializedName("INR")
     @Expose
     private Double inr;
@@ -203,6 +211,9 @@ public class Results {
     @SerializedName("ISK")
     @Expose
     private Double isk;
+    @SerializedName("JEP")
+    @Expose
+    private Double jep;
     @SerializedName("JMD")
     @Expose
     private Double jmd;
@@ -221,12 +232,12 @@ public class Results {
     @SerializedName("KHR")
     @Expose
     private Double khr;
+    @SerializedName("KID")
+    @Expose
+    private Double kid;
     @SerializedName("KMF")
     @Expose
     private Double kmf;
-    @SerializedName("KPW")
-    @Expose
-    private Double kpw;
     @SerializedName("KRW")
     @Expose
     private Double krw;
@@ -305,6 +316,9 @@ public class Results {
     @SerializedName("NGN")
     @Expose
     private Double ngn;
+    @SerializedName("NIO")
+    @Expose
+    private Double nio;
     @SerializedName("NOK")
     @Expose
     private Double nok;
@@ -356,6 +370,9 @@ public class Results {
     @SerializedName("SAR")
     @Expose
     private Double sar;
+    @SerializedName("SBD")
+    @Expose
+    private Double sbd;
     @SerializedName("SCR")
     @Expose
     private Double scr;
@@ -380,6 +397,12 @@ public class Results {
     @SerializedName("SRD")
     @Expose
     private Double srd;
+    @SerializedName("SSP")
+    @Expose
+    private Double ssp;
+    @SerializedName("STN")
+    @Expose
+    private Double stn;
     @SerializedName("SYP")
     @Expose
     private Double syp;
@@ -407,6 +430,9 @@ public class Results {
     @SerializedName("TTD")
     @Expose
     private Double ttd;
+    @SerializedName("TVD")
+    @Expose
+    private Double tvd;
     @SerializedName("TWD")
     @Expose
     private Double twd;
@@ -419,15 +445,15 @@ public class Results {
     @SerializedName("UGX")
     @Expose
     private Double ugx;
-    @SerializedName("USD")
-    @Expose
-    private Double usd;
     @SerializedName("UYU")
     @Expose
     private Double uyu;
     @SerializedName("UZS")
     @Expose
     private Double uzs;
+    @SerializedName("VES")
+    @Expose
+    private Double ves;
     @SerializedName("VND")
     @Expose
     private Double vnd;
@@ -461,6 +487,17 @@ public class Results {
     @SerializedName("ZMW")
     @Expose
     private Double zmw;
+    @SerializedName("ZWL")
+    @Expose
+    private Double zwl;
+
+    public Double getUsd() {
+        return usd;
+    }
+
+    public void setUsd(Double usd) {
+        this.usd = usd;
+    }
 
     public Double getAed() {
         return aed;
@@ -646,6 +683,14 @@ public class Results {
         this.bwp = bwp;
     }
 
+    public Double getByn() {
+        return byn;
+    }
+
+    public void setByn(Double byn) {
+        this.byn = byn;
+    }
+
     public Double getBzd() {
         return bzd;
     }
@@ -678,28 +723,12 @@ public class Results {
         this.chf = chf;
     }
 
-    public Double getClf() {
-        return clf;
-    }
-
-    public void setClf(Double clf) {
-        this.clf = clf;
-    }
-
     public Double getClp() {
         return clp;
     }
 
     public void setClp(Double clp) {
         this.clp = clp;
-    }
-
-    public Double getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(Double cnh) {
-        this.cnh = cnh;
     }
 
     public Double getCny() {
@@ -716,6 +745,14 @@ public class Results {
 
     public void setCop(Double cop) {
         this.cop = cop;
+    }
+
+    public Double getCrc() {
+        return crc;
+    }
+
+    public void setCrc(Double crc) {
+        this.crc = crc;
     }
 
     public Double getCup() {
@@ -822,6 +859,14 @@ public class Results {
         this.fkp = fkp;
     }
 
+    public Double getFok() {
+        return fok;
+    }
+
+    public void setFok(Double fok) {
+        this.fok = fok;
+    }
+
     public Double getGbp() {
         return gbp;
     }
@@ -836,6 +881,14 @@ public class Results {
 
     public void setGel(Double gel) {
         this.gel = gel;
+    }
+
+    public Double getGgp() {
+        return ggp;
+    }
+
+    public void setGgp(Double ggp) {
+        this.ggp = ggp;
     }
 
     public Double getGhs() {
@@ -942,6 +995,14 @@ public class Results {
         this.ils = ils;
     }
 
+    public Double getImp() {
+        return imp;
+    }
+
+    public void setImp(Double imp) {
+        this.imp = imp;
+    }
+
     public Double getInr() {
         return inr;
     }
@@ -972,6 +1033,14 @@ public class Results {
 
     public void setIsk(Double isk) {
         this.isk = isk;
+    }
+
+    public Double getJep() {
+        return jep;
+    }
+
+    public void setJep(Double jep) {
+        this.jep = jep;
     }
 
     public Double getJmd() {
@@ -1022,20 +1091,20 @@ public class Results {
         this.khr = khr;
     }
 
+    public Double getKid() {
+        return kid;
+    }
+
+    public void setKid(Double kid) {
+        this.kid = kid;
+    }
+
     public Double getKmf() {
         return kmf;
     }
 
     public void setKmf(Double kmf) {
         this.kmf = kmf;
-    }
-
-    public Double getKpw() {
-        return kpw;
-    }
-
-    public void setKpw(Double kpw) {
-        this.kpw = kpw;
     }
 
     public Double getKrw() {
@@ -1246,6 +1315,14 @@ public class Results {
         this.ngn = ngn;
     }
 
+    public Double getNio() {
+        return nio;
+    }
+
+    public void setNio(Double nio) {
+        this.nio = nio;
+    }
+
     public Double getNok() {
         return nok;
     }
@@ -1382,6 +1459,14 @@ public class Results {
         this.sar = sar;
     }
 
+    public Double getSbd() {
+        return sbd;
+    }
+
+    public void setSbd(Double sbd) {
+        this.sbd = sbd;
+    }
+
     public Double getScr() {
         return scr;
     }
@@ -1444,6 +1529,22 @@ public class Results {
 
     public void setSrd(Double srd) {
         this.srd = srd;
+    }
+
+    public Double getSsp() {
+        return ssp;
+    }
+
+    public void setSsp(Double ssp) {
+        this.ssp = ssp;
+    }
+
+    public Double getStn() {
+        return stn;
+    }
+
+    public void setStn(Double stn) {
+        this.stn = stn;
     }
 
     public Double getSyp() {
@@ -1518,6 +1619,14 @@ public class Results {
         this.ttd = ttd;
     }
 
+    public Double getTvd() {
+        return tvd;
+    }
+
+    public void setTvd(Double tvd) {
+        this.tvd = tvd;
+    }
+
     public Double getTwd() {
         return twd;
     }
@@ -1550,14 +1659,6 @@ public class Results {
         this.ugx = ugx;
     }
 
-    public Double getUsd() {
-        return usd;
-    }
-
-    public void setUsd(Double usd) {
-        this.usd = usd;
-    }
-
     public Double getUyu() {
         return uyu;
     }
@@ -1572,6 +1673,14 @@ public class Results {
 
     public void setUzs(Double uzs) {
         this.uzs = uzs;
+    }
+
+    public Double getVes() {
+        return ves;
+    }
+
+    public void setVes(Double ves) {
+        this.ves = ves;
     }
 
     public Double getVnd() {
@@ -1662,164 +1771,350 @@ public class Results {
         this.zmw = zmw;
     }
 
-    public Double getResultTheyGet() {
-        if (aed != null) return aed;
-        else if (afn != null) return afn;
-        else if (all != null) return all;
-        else if (amd != null) return amd;
-        else if (ang != null) return ang;
-        else if (aoa != null) return aoa;
-        else if (ars != null) return ars;
-        else if (aud != null) return aud;
-        else if (awg != null) return awg;
-        else if (azn != null) return azn;
-        else if (bam != null) return bam;
-        else if (bbd != null) return bbd;
-        else if (bdt != null) return bdt;
-        else if (bgn != null) return bgn;
-        else if (bhd != null) return bhd;
-        else if (bif != null) return bif;
-        else if (bmd != null) return bmd;
-        else if (bnd != null) return bnd;
-        else if (bob != null) return bob;
-        else if (brl != null) return brl;
-        else if (bsd != null) return bsd;
-        else if (btn != null) return btn;
-        else if (bwp != null) return bwp;
-        else if (bzd != null) return bzd;
-        else if (cad != null) return cad;
-        else if (cdf != null) return cdf;
-        else if (chf != null) return chf;
-        else if (clf != null) return clf;
-        else if (clp != null) return clp;
-        else if (cnh != null) return cnh;
-        else if (cny != null) return cny;
-        else if (cop != null) return cop;
-        else if (cup != null) return cup;
-        else if (cve != null) return cve;
-        else if (czk != null) return czk;
-        else if (djf != null) return djf;
-        else if (dkk != null) return dkk;
-        else if (dop != null) return dop;
-        else if (dzd != null) return dzd;
-        else if (egp != null) return egp;
-        else if (ern != null) return ern;
-        else if (etb != null) return etb;
-        else if (eur != null) return eur;
-        else if (fjd != null) return fjd;
-        else if (fkp != null) return fkp;
-        else if (gbp != null) return gbp;
-        else if (gel != null) return gel;
-        else if (ghs != null) return ghs;
-        else if (gip != null) return gip;
-        else if (gmd != null) return gmd;
-        else if (gnf != null) return gnf;
-        else if (gtq != null) return gtq;
-        else if (gyd != null) return gyd;
-        else if (hkd != null) return hkd;
-        else if (hnl != null) return hnl;
-        else if (hrk != null) return hrk;
-        else if (htg != null) return htg;
-        else if (huf != null) return huf;
-        else if (idr != null) return idr;
-        else if (ils != null) return ils;
-        else if (inr != null) return inr;
-        else if (iqd != null) return iqd;
-        else if (irr != null) return irr;
-        else if (isk != null) return isk;
-        else if (jmd != null) return jmd;
-        else if (jod != null) return jod;
-        else if (jpy != null) return jpy;
-        else if (kes != null) return kes;
-        else if (kgs != null) return kgs;
-        else if (khr != null) return khr;
-        else if (kmf != null) return kmf;
-        else if (kpw != null) return kpw;
-        else if (krw != null) return krw;
-        else if (kwd != null) return kwd;
-        else if (kyd != null) return kyd;
-        else if (kzt != null) return kzt;
-        else if (lak != null) return lak;
-        else if (lbp != null) return lbp;
-        else if (lkr != null) return lkr;
-        else if (lrd != null) return lrd;
-        else if (lsl != null) return lsl;
-        else if (lyd != null) return lyd;
-        else if (mad != null) return mad;
-        else if (mdl != null) return mdl;
-        else if (mga != null) return mga;
-        else if (mkd != null) return mkd;
-        else if (mmk != null) return mmk;
-        else if (mnt != null) return mnt;
-        else if (mop != null) return mop;
-        else if (mru != null) return mru;
-        else if (mur != null) return mur;
-        else if (mvr != null) return mvr;
-        else if (mwk != null) return mwk;
-        else if (mxn != null) return mxn;
-        else if (myr != null) return myr;
-        else if (mzn != null) return mzn;
-        else if (nad != null) return nad;
-        else if (ngn != null) return ngn;
-        else if (nok != null) return nok;
-        else if (npr != null) return npr;
-        else if (nzd != null) return nzd;
-        else if (omr != null) return omr;
-        else if (pab != null) return pab;
-        else if (pen != null) return pen;
-        else if (pgk != null) return pgk;
-        else if (php != null) return php;
-        else if (pkr != null) return pkr;
-        else if (pln != null) return pln;
-        else if (pyg != null) return pyg;
-        else if (qar != null) return qar;
-        else if (ron != null) return ron;
-        else if (rsd != null) return rsd;
-        else if (rub != null) return rub;
-        else if (rwf != null) return rwf;
-        else if (sar != null) return sar;
-        else if (scr != null) return scr;
-        else if (sdg != null) return sdg;
-        else if (sek != null) return sek;
-        else if (sgd != null) return sgd;
-        else if (shp != null) return shp;
-        else if (sll != null) return sll;
-        else if (sos != null) return sos;
-        else if (srd != null) return srd;
-        else if (syp != null) return syp;
-        else if (szl != null) return szl;
-        else if (thb != null) return thb;
-        else if (tjs != null) return tjs;
-        else if (tmt != null) return tmt;
-        else if (tnd != null) return tnd;
-        else if (top != null) return top;
-        else if (getTry() != null) return getTry();
-        else if (ttd != null) return ttd;
-        else if (twd != null) return twd;
-        else if (tzs != null) return tzs;
-        else if (uah != null) return uah;
-        else if (ugx != null) return ugx;
-        else if (usd != null) return usd;
-        else if (uyu != null) return uyu;
-        else if (uzs != null) return uzs;
-        else if (vnd != null) return vnd;
-        else if (vuv != null) return vuv;
-        else if (wst != null) return wst;
-        else if (xaf != null) return xaf;
-        else if (xcd != null) return xcd;
-        else if (xdr != null) return xdr;
-        else if (xof != null) return xof;
-        else if (xpf != null) return xpf;
-        else if (yer != null) return yer;
-        else if (zar != null) return zar;
-        else return zmw;
+    public Double getZwl() {
+        return zwl;
+    }
 
+    public void setZwl(Double zwl) {
+        this.zwl = zwl;
+    }
+
+    public List<CurrencyUnit> getListCurrencies() {
+        List<CurrencyUnit> list = new ArrayList<>();
+
+        CurrencyUnit currencyUnit1 = new CurrencyUnit("AED", getAed());
+        list.add(currencyUnit1);
+        CurrencyUnit currencyUnit2 = new CurrencyUnit("AFN", getAfn());
+        list.add(currencyUnit2);
+        CurrencyUnit currencyUnit3 = new CurrencyUnit("ALL", getAll());
+        list.add(currencyUnit3);
+        CurrencyUnit currencyUnit4 = new CurrencyUnit("AMD", getAmd());
+        list.add(currencyUnit4);
+        CurrencyUnit currencyUnit5 = new CurrencyUnit("ANG", getAng());
+        list.add(currencyUnit5);
+        CurrencyUnit currencyUnit6 = new CurrencyUnit("AOA", getAoa());
+        list.add(currencyUnit6);
+        CurrencyUnit currencyUnit7 = new CurrencyUnit("ARS", getArs());
+        list.add(currencyUnit7);
+        CurrencyUnit currencyUnit8 = new CurrencyUnit("AUD", getAud());
+        list.add(currencyUnit8);
+        CurrencyUnit currencyUnit9 = new CurrencyUnit("AWG", getAwg());
+        list.add(currencyUnit9);
+        CurrencyUnit currencyUnit10 = new CurrencyUnit("AZN", getAzn());
+        list.add(currencyUnit10);
+        CurrencyUnit currencyUnit11 = new CurrencyUnit("BAM", getBam());
+        list.add(currencyUnit11);
+        CurrencyUnit currencyUnit12 = new CurrencyUnit("BBD", getBbd());
+        list.add(currencyUnit12);
+        CurrencyUnit currencyUnit13 = new CurrencyUnit("BDT", getBdt());
+        list.add(currencyUnit13);
+        CurrencyUnit currencyUnit14 = new CurrencyUnit("BGN", getBgn());
+        list.add(currencyUnit14);
+        CurrencyUnit currencyUnit15 = new CurrencyUnit("BHD", getBhd());
+        list.add(currencyUnit15);
+        CurrencyUnit currencyUnit16 = new CurrencyUnit("BIF", getBif());
+        list.add(currencyUnit16);
+        CurrencyUnit currencyUnit17 = new CurrencyUnit("BMD", getBmd());
+        list.add(currencyUnit17);
+        CurrencyUnit currencyUnit18 = new CurrencyUnit("BND", getBnd());
+        list.add(currencyUnit18);
+        CurrencyUnit currencyUnit19 = new CurrencyUnit("BOB", getBob());
+        list.add(currencyUnit19);
+        CurrencyUnit currencyUnit20 = new CurrencyUnit("BRL", getBrl());
+        list.add(currencyUnit20);
+        CurrencyUnit currencyUnit21 = new CurrencyUnit("BSD", getBsd());
+        list.add(currencyUnit21);
+        CurrencyUnit currencyUnit22 = new CurrencyUnit("BTN", getBtn());
+        list.add(currencyUnit22);
+        CurrencyUnit currencyUnit23 = new CurrencyUnit("BWP", getBwp());
+        list.add(currencyUnit23);
+        CurrencyUnit currencyUnit24 = new CurrencyUnit("BYN", getByn());
+        list.add(currencyUnit24);
+        CurrencyUnit currencyUnit25 = new CurrencyUnit("BZD", getBzd());
+        list.add(currencyUnit25);
+        CurrencyUnit currencyUnit26 = new CurrencyUnit("CAD", getCad());
+        list.add(currencyUnit26);
+        CurrencyUnit currencyUnit27 = new CurrencyUnit("CDF", getCdf());
+        list.add(currencyUnit27);
+        CurrencyUnit currencyUnit28 = new CurrencyUnit("CHF", getChf());
+        list.add(currencyUnit28);
+        CurrencyUnit currencyUnit29 = new CurrencyUnit("CLP", getClp());
+        list.add(currencyUnit29);
+        CurrencyUnit currencyUnit30 = new CurrencyUnit("CNY", getCny());
+        list.add(currencyUnit30);
+        CurrencyUnit currencyUnit31 = new CurrencyUnit("COP", getCop());
+        list.add(currencyUnit31);
+        CurrencyUnit currencyUnit32 = new CurrencyUnit("CRC", getCrc());
+        list.add(currencyUnit32);
+        CurrencyUnit currencyUnit33 = new CurrencyUnit("CUP", getCup());
+        list.add(currencyUnit33);
+        CurrencyUnit currencyUnit34 = new CurrencyUnit("CVE", getCve());
+        list.add(currencyUnit34);
+        CurrencyUnit currencyUnit35 = new CurrencyUnit("CZK", getCzk());
+        list.add(currencyUnit35);
+        CurrencyUnit currencyUnit36 = new CurrencyUnit("DJF", getDjf());
+        list.add(currencyUnit36);
+        CurrencyUnit currencyUnit37 = new CurrencyUnit("DKK", getDkk());
+        list.add(currencyUnit37);
+        CurrencyUnit currencyUnit38 = new CurrencyUnit("DOP", getDop());
+        list.add(currencyUnit38);
+        CurrencyUnit currencyUnit39 = new CurrencyUnit("DZD", getDzd());
+        list.add(currencyUnit39);
+        CurrencyUnit currencyUnit40 = new CurrencyUnit("EGP", getEgp());
+        list.add(currencyUnit40);
+        CurrencyUnit currencyUnit41 = new CurrencyUnit("ERN", getErn());
+        list.add(currencyUnit41);
+        CurrencyUnit currencyUnit42 = new CurrencyUnit("ETB", getEtb());
+        list.add(currencyUnit42);
+        CurrencyUnit currencyUnit43 = new CurrencyUnit("EUR", getEur());
+        list.add(currencyUnit43);
+        CurrencyUnit currencyUnit44 = new CurrencyUnit("FJD", getFjd());
+        list.add(currencyUnit44);
+        CurrencyUnit currencyUnit45 = new CurrencyUnit("FKP", getFkp());
+        list.add(currencyUnit45);
+        CurrencyUnit currencyUnit46 = new CurrencyUnit("FOK", getFok());
+        list.add(currencyUnit46);
+        CurrencyUnit currencyUnit47 = new CurrencyUnit("GBP", getGbp());
+        list.add(currencyUnit47);
+        CurrencyUnit currencyUnit48 = new CurrencyUnit("GEL", getGel());
+        list.add(currencyUnit48);
+        CurrencyUnit currencyUnit49 = new CurrencyUnit("GGP", getGgp());
+        list.add(currencyUnit49);
+        CurrencyUnit currencyUnit50 = new CurrencyUnit("GHS", getGhs());
+        list.add(currencyUnit50);
+        CurrencyUnit currencyUnit51 = new CurrencyUnit("GIP", getGip());
+        list.add(currencyUnit51);
+        CurrencyUnit currencyUnit52 = new CurrencyUnit("GMD", getGmd());
+        list.add(currencyUnit52);
+        CurrencyUnit currencyUnit53 = new CurrencyUnit("GNF", getGnf());
+        list.add(currencyUnit53);
+        CurrencyUnit currencyUnit54 = new CurrencyUnit("GTQ", getGtq());
+        list.add(currencyUnit54);
+        CurrencyUnit currencyUnit55 = new CurrencyUnit("GYD", getGyd());
+        list.add(currencyUnit55);
+        CurrencyUnit currencyUnit56 = new CurrencyUnit("HKD", getHkd());
+        list.add(currencyUnit56);
+        CurrencyUnit currencyUnit57 = new CurrencyUnit("HNL", getHnl());
+        list.add(currencyUnit57);
+        CurrencyUnit currencyUnit58 = new CurrencyUnit("HRK", getHrk());
+        list.add(currencyUnit58);
+        CurrencyUnit currencyUnit59 = new CurrencyUnit("HTG", getHtg());
+        list.add(currencyUnit59);
+        CurrencyUnit currencyUnit60 = new CurrencyUnit("HUF", getHuf());
+        list.add(currencyUnit60);
+        CurrencyUnit currencyUnit61 = new CurrencyUnit("IDR", getIdr());
+        list.add(currencyUnit61);
+        CurrencyUnit currencyUnit62 = new CurrencyUnit("ILS", getIls());
+        list.add(currencyUnit62);
+        CurrencyUnit currencyUnit63 = new CurrencyUnit("IMP", getImp());
+        list.add(currencyUnit63);
+        CurrencyUnit currencyUnit64 = new CurrencyUnit("INR", getInr());
+        list.add(currencyUnit64);
+        CurrencyUnit currencyUnit65 = new CurrencyUnit("IQD", getIqd());
+        list.add(currencyUnit65);
+        CurrencyUnit currencyUnit66 = new CurrencyUnit("IRR", getIrr());
+        list.add(currencyUnit66);
+        CurrencyUnit currencyUnit67 = new CurrencyUnit("ISK", getIsk());
+        list.add(currencyUnit67);
+        CurrencyUnit currencyUnit68 = new CurrencyUnit("JEP", getJep());
+        list.add(currencyUnit68);
+        CurrencyUnit currencyUnit69 = new CurrencyUnit("JMD", getJmd());
+        list.add(currencyUnit69);
+        CurrencyUnit currencyUnit70 = new CurrencyUnit("JOD", getJod());
+        list.add(currencyUnit70);
+        CurrencyUnit currencyUnit71 = new CurrencyUnit("JPY", getJpy());
+        list.add(currencyUnit71);
+        CurrencyUnit currencyUnit72 = new CurrencyUnit("KES", getKes());
+        list.add(currencyUnit72);
+        CurrencyUnit currencyUnit73 = new CurrencyUnit("KGS", getKgs());
+        list.add(currencyUnit73);
+        CurrencyUnit currencyUnit74 = new CurrencyUnit("KHR", getKhr());
+        list.add(currencyUnit74);
+        CurrencyUnit currencyUnit75 = new CurrencyUnit("KID", getKid());
+        list.add(currencyUnit75);
+        CurrencyUnit currencyUnit76 = new CurrencyUnit("KMF", getKmf());
+        list.add(currencyUnit76);
+        CurrencyUnit currencyUnit77 = new CurrencyUnit("KRW", getKrw());
+        list.add(currencyUnit77);
+        CurrencyUnit currencyUnit78 = new CurrencyUnit("KWD", getKwd());
+        list.add(currencyUnit78);
+        CurrencyUnit currencyUnit79 = new CurrencyUnit("KYD", getKyd());
+        list.add(currencyUnit79);
+        CurrencyUnit currencyUnit80 = new CurrencyUnit("KZT", getKzt());
+        list.add(currencyUnit80);
+        CurrencyUnit currencyUnit81 = new CurrencyUnit("LAK", getLak());
+        list.add(currencyUnit81);
+        CurrencyUnit currencyUnit82 = new CurrencyUnit("LBP", getLbp());
+        list.add(currencyUnit82);
+        CurrencyUnit currencyUnit83 = new CurrencyUnit("LKR", getLkr());
+        list.add(currencyUnit83);
+        CurrencyUnit currencyUnit84 = new CurrencyUnit("LRD", getLrd());
+        list.add(currencyUnit84);
+        CurrencyUnit currencyUnit85 = new CurrencyUnit("LSL", getLsl());
+        list.add(currencyUnit85);
+        CurrencyUnit currencyUnit86 = new CurrencyUnit("LYD", getLyd());
+        list.add(currencyUnit86);
+        CurrencyUnit currencyUnit87 = new CurrencyUnit("MAD", getMad());
+        list.add(currencyUnit87);
+        CurrencyUnit currencyUnit88 = new CurrencyUnit("MDL", getMdl());
+        list.add(currencyUnit88);
+        CurrencyUnit currencyUnit89 = new CurrencyUnit("MGA", getMga());
+        list.add(currencyUnit89);
+        CurrencyUnit currencyUnit90 = new CurrencyUnit("MKD", getMkd());
+        list.add(currencyUnit90);
+        CurrencyUnit currencyUnit91 = new CurrencyUnit("MMK", getMmk());
+        list.add(currencyUnit91);
+        CurrencyUnit currencyUnit92 = new CurrencyUnit("MNT", getMnt());
+        list.add(currencyUnit92);
+        CurrencyUnit currencyUnit93 = new CurrencyUnit("MOP", getMop());
+        list.add(currencyUnit93);
+        CurrencyUnit currencyUnit94 = new CurrencyUnit("MRU", getMru());
+        list.add(currencyUnit94);
+        CurrencyUnit currencyUnit95 = new CurrencyUnit("MUR", getMur());
+        list.add(currencyUnit95);
+        CurrencyUnit currencyUnit96 = new CurrencyUnit("MVR", getMvr());
+        list.add(currencyUnit96);
+        CurrencyUnit currencyUnit97 = new CurrencyUnit("MWK", getMwk());
+        list.add(currencyUnit97);
+        CurrencyUnit currencyUnit98 = new CurrencyUnit("MXN", getMxn());
+        list.add(currencyUnit98);
+        CurrencyUnit currencyUnit99 = new CurrencyUnit("MYR", getMyr());
+        list.add(currencyUnit99);
+        CurrencyUnit currencyUnit100 = new CurrencyUnit("MZN", getMzn());
+        list.add(currencyUnit100);
+        CurrencyUnit currencyUnit101 = new CurrencyUnit("NAD", getNad());
+        list.add(currencyUnit101);
+        CurrencyUnit currencyUnit102 = new CurrencyUnit("NGN", getNgn());
+        list.add(currencyUnit102);
+        CurrencyUnit currencyUnit103 = new CurrencyUnit("NIO", getNio());
+        list.add(currencyUnit103);
+        CurrencyUnit currencyUnit104 = new CurrencyUnit("NOK", getNok());
+        list.add(currencyUnit104);
+        CurrencyUnit currencyUnit105 = new CurrencyUnit("NPR", getNpr());
+        list.add(currencyUnit105);
+        CurrencyUnit currencyUnit106 = new CurrencyUnit("NZD", getNzd());
+        list.add(currencyUnit106);
+        CurrencyUnit currencyUnit107 = new CurrencyUnit("OMR", getOmr());
+        list.add(currencyUnit107);
+        CurrencyUnit currencyUnit108 = new CurrencyUnit("PAB", getPab());
+        list.add(currencyUnit108);
+        CurrencyUnit currencyUnit109 = new CurrencyUnit("PEN", getPen());
+        list.add(currencyUnit109);
+        CurrencyUnit currencyUnit110 = new CurrencyUnit("PGK", getPgk());
+        list.add(currencyUnit110);
+        CurrencyUnit currencyUnit111 = new CurrencyUnit("PHP", getPhp());
+        list.add(currencyUnit111);
+        CurrencyUnit currencyUnit112 = new CurrencyUnit("PKR", getPkr());
+        list.add(currencyUnit112);
+        CurrencyUnit currencyUnit113 = new CurrencyUnit("PLN", getPln());
+        list.add(currencyUnit113);
+        CurrencyUnit currencyUnit114 = new CurrencyUnit("PYG", getPyg());
+        list.add(currencyUnit114);
+        CurrencyUnit currencyUnit115 = new CurrencyUnit("QAR", getQar());
+        list.add(currencyUnit115);
+        CurrencyUnit currencyUnit116 = new CurrencyUnit("RON", getRon());
+        list.add(currencyUnit116);
+        CurrencyUnit currencyUnit117 = new CurrencyUnit("RSD", getRsd());
+        list.add(currencyUnit117);
+        CurrencyUnit currencyUnit118 = new CurrencyUnit("RUB", getRub());
+        list.add(currencyUnit118);
+        CurrencyUnit currencyUnit119 = new CurrencyUnit("RWF", getRwf());
+        list.add(currencyUnit119);
+        CurrencyUnit currencyUnit120 = new CurrencyUnit("SAR", getSar());
+        list.add(currencyUnit120);
+        CurrencyUnit currencyUnit121 = new CurrencyUnit("SBD", getSbd());
+        list.add(currencyUnit121);
+        CurrencyUnit currencyUnit122 = new CurrencyUnit("SCR", getScr());
+        list.add(currencyUnit122);
+        CurrencyUnit currencyUnit123 = new CurrencyUnit("SDG", getSdg());
+        list.add(currencyUnit123);
+        CurrencyUnit currencyUnit124 = new CurrencyUnit("SEK", getSek());
+        list.add(currencyUnit124);
+        CurrencyUnit currencyUnit125 = new CurrencyUnit("SGD", getSgd());
+        list.add(currencyUnit125);
+        CurrencyUnit currencyUnit126 = new CurrencyUnit("SHP", getShp());
+        list.add(currencyUnit126);
+        CurrencyUnit currencyUnit127 = new CurrencyUnit("SLL", getSll());
+        list.add(currencyUnit127);
+        CurrencyUnit currencyUnit128 = new CurrencyUnit("SOS", getSos());
+        list.add(currencyUnit128);
+        CurrencyUnit currencyUnit129 = new CurrencyUnit("SRD", getSrd());
+        list.add(currencyUnit129);
+        CurrencyUnit currencyUnit130 = new CurrencyUnit("SSP", getSsp());
+        list.add(currencyUnit130);
+        CurrencyUnit currencyUnit131 = new CurrencyUnit("STN", getStn());
+        list.add(currencyUnit131);
+        CurrencyUnit currencyUnit132 = new CurrencyUnit("SYP", getSyp());
+        list.add(currencyUnit132);
+        CurrencyUnit currencyUnit133 = new CurrencyUnit("SZL", getSzl());
+        list.add(currencyUnit133);
+        CurrencyUnit currencyUnit134 = new CurrencyUnit("THB", getThb());
+        list.add(currencyUnit134);
+        CurrencyUnit currencyUnit135 = new CurrencyUnit("TJS", getTjs());
+        list.add(currencyUnit135);
+        CurrencyUnit currencyUnit136 = new CurrencyUnit("TMT", getTmt());
+        list.add(currencyUnit136);
+        CurrencyUnit currencyUnit137 = new CurrencyUnit("TND", getTnd());
+        list.add(currencyUnit137);
+        CurrencyUnit currencyUnit138 = new CurrencyUnit("TOP", getTop());
+        list.add(currencyUnit138);
+        CurrencyUnit currencyUnit139 = new CurrencyUnit("TRY", getTry());
+        list.add(currencyUnit139);
+        CurrencyUnit currencyUnit140 = new CurrencyUnit("TTD", getTtd());
+        list.add(currencyUnit140);
+        CurrencyUnit currencyUnit141 = new CurrencyUnit("TVD", getTvd());
+        list.add(currencyUnit141);
+        CurrencyUnit currencyUnit142 = new CurrencyUnit("TWD", getTwd());
+        list.add(currencyUnit142);
+        CurrencyUnit currencyUnit143 = new CurrencyUnit("TZS", getTzs());
+        list.add(currencyUnit143);
+        CurrencyUnit currencyUnit144 = new CurrencyUnit("UAH", getUah());
+        list.add(currencyUnit144);
+        CurrencyUnit currencyUnit145 = new CurrencyUnit("UGX", getUgx());
+        list.add(currencyUnit145);
+        CurrencyUnit currencyUnit146 = new CurrencyUnit("USD", getUsd());
+        list.add(currencyUnit146);
+        CurrencyUnit currencyUnit147 = new CurrencyUnit("UYU", getUyu());
+        list.add(currencyUnit147);
+        CurrencyUnit currencyUnit148 = new CurrencyUnit("UZS", getUzs());
+        list.add(currencyUnit148);
+        CurrencyUnit currencyUnit149 = new CurrencyUnit("VES", getVes());
+        list.add(currencyUnit149);
+        CurrencyUnit currencyUnit150 = new CurrencyUnit("VND", getVnd());
+        list.add(currencyUnit150);
+        CurrencyUnit currencyUnit151 = new CurrencyUnit("VUV", getVuv());
+        list.add(currencyUnit151);
+        CurrencyUnit currencyUnit152 = new CurrencyUnit("WST", getWst());
+        list.add(currencyUnit152);
+        CurrencyUnit currencyUnit153 = new CurrencyUnit("XAF", getXaf());
+        list.add(currencyUnit153);
+        CurrencyUnit currencyUnit154 = new CurrencyUnit("XCD", getXcd());
+        list.add(currencyUnit154);
+        CurrencyUnit currencyUnit155 = new CurrencyUnit("XDR", getXdr());
+        list.add(currencyUnit155);
+        CurrencyUnit currencyUnit156 = new CurrencyUnit("XOF", getXof());
+        list.add(currencyUnit156);
+        CurrencyUnit currencyUnit157 = new CurrencyUnit("XPF", getXpf());
+        list.add(currencyUnit157);
+        CurrencyUnit currencyUnit158 = new CurrencyUnit("YER", getYer());
+        list.add(currencyUnit158);
+        CurrencyUnit currencyUnit159 = new CurrencyUnit("ZAR", getZar());
+        list.add(currencyUnit159);
+        CurrencyUnit currencyUnit160 = new CurrencyUnit("ZMW", getZmw());
+        list.add(currencyUnit160);
+
+        CurrencyUnit currencyUnit161 = new CurrencyUnit("ZWL", getZwl());
+        list.add(currencyUnit161);
+
+
+        return list;
     }
 
     @Override
     public String toString() {
-        return "Results{" +
-                "aed=" + aed +
+        return "ConversionRates{" +
+                "usd=" + usd +
+                ", aed=" + aed +
                 ", afn=" + afn +
                 ", all=" + all +
                 ", amd=" + amd +
@@ -1842,15 +2137,15 @@ public class Results {
                 ", bsd=" + bsd +
                 ", btn=" + btn +
                 ", bwp=" + bwp +
+                ", byn=" + byn +
                 ", bzd=" + bzd +
                 ", cad=" + cad +
                 ", cdf=" + cdf +
                 ", chf=" + chf +
-                ", clf=" + clf +
                 ", clp=" + clp +
-                ", cnh=" + cnh +
                 ", cny=" + cny +
                 ", cop=" + cop +
+                ", crc=" + crc +
                 ", cup=" + cup +
                 ", cve=" + cve +
                 ", czk=" + czk +
@@ -1864,8 +2159,10 @@ public class Results {
                 ", eur=" + eur +
                 ", fjd=" + fjd +
                 ", fkp=" + fkp +
+                ", fok=" + fok +
                 ", gbp=" + gbp +
                 ", gel=" + gel +
+                ", ggp=" + ggp +
                 ", ghs=" + ghs +
                 ", gip=" + gip +
                 ", gmd=" + gmd +
@@ -1879,18 +2176,20 @@ public class Results {
                 ", huf=" + huf +
                 ", idr=" + idr +
                 ", ils=" + ils +
+                ", imp=" + imp +
                 ", inr=" + inr +
                 ", iqd=" + iqd +
                 ", irr=" + irr +
                 ", isk=" + isk +
+                ", jep=" + jep +
                 ", jmd=" + jmd +
                 ", jod=" + jod +
                 ", jpy=" + jpy +
                 ", kes=" + kes +
                 ", kgs=" + kgs +
                 ", khr=" + khr +
+                ", kid=" + kid +
                 ", kmf=" + kmf +
-                ", kpw=" + kpw +
                 ", krw=" + krw +
                 ", kwd=" + kwd +
                 ", kyd=" + kyd +
@@ -1917,6 +2216,7 @@ public class Results {
                 ", mzn=" + mzn +
                 ", nad=" + nad +
                 ", ngn=" + ngn +
+                ", nio=" + nio +
                 ", nok=" + nok +
                 ", npr=" + npr +
                 ", nzd=" + nzd +
@@ -1934,6 +2234,7 @@ public class Results {
                 ", rub=" + rub +
                 ", rwf=" + rwf +
                 ", sar=" + sar +
+                ", sbd=" + sbd +
                 ", scr=" + scr +
                 ", sdg=" + sdg +
                 ", sek=" + sek +
@@ -1942,6 +2243,8 @@ public class Results {
                 ", sll=" + sll +
                 ", sos=" + sos +
                 ", srd=" + srd +
+                ", ssp=" + ssp +
+                ", stn=" + stn +
                 ", syp=" + syp +
                 ", szl=" + szl +
                 ", thb=" + thb +
@@ -1951,13 +2254,14 @@ public class Results {
                 ", top=" + top +
                 ", _try=" + _try +
                 ", ttd=" + ttd +
+                ", tvd=" + tvd +
                 ", twd=" + twd +
                 ", tzs=" + tzs +
                 ", uah=" + uah +
                 ", ugx=" + ugx +
-                ", usd=" + usd +
                 ", uyu=" + uyu +
                 ", uzs=" + uzs +
+                ", ves=" + ves +
                 ", vnd=" + vnd +
                 ", vuv=" + vuv +
                 ", wst=" + wst +
@@ -1969,6 +2273,7 @@ public class Results {
                 ", yer=" + yer +
                 ", zar=" + zar +
                 ", zmw=" + zmw +
+                ", zwl=" + zwl +
                 '}';
     }
 }

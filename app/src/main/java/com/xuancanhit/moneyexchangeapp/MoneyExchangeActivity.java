@@ -1,32 +1,27 @@
 package com.xuancanhit.moneyexchangeapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.xuancanhit.moneyexchangeapp.models.CurrencyUnit;
+import com.xuancanhit.moneyexchangeapp.models.LatestUSD;
 import com.xuancanhit.moneyexchangeapp.request.Service;
-import com.xuancanhit.moneyexchangeapp.respone.CurrencyConvert;
 import com.xuancanhit.moneyexchangeapp.utils.Credentials;
 import com.xuancanhit.moneyexchangeapp.utils.ExchangeApi;
 
-import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +39,7 @@ public class MoneyExchangeActivity extends AppCompatActivity {
     String from, to;
     String theyGet;
 
+    List<CurrencyUnit> currencyUnits;
     ArrayAdapter<String> adapter;
 
 
@@ -53,23 +49,9 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_money_exchange);
         initUI();
 
-        // Currencies
-        currencies = Arrays.asList("AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM",
-                "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BZD", "CAD",
-                "CDF", "CHF", "CLF", "CLP", "CNH", "CNY", "COP", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD",
-                "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD",
-                "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY",
-                "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL",
-                "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR",
-                "MZN", "NAD", "NGN", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG",
-                "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD",
-                "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD",
-                "UYU", "UZS", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW");
+        //UpdateData();
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, currencies);
 
-        // Spinner
-        adapterSpinner();
         snYouSend.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,7 +59,12 @@ public class MoneyExchangeActivity extends AppCompatActivity {
                 posN = Integer.parseInt(pos);
                 //
                 from = currencies.get(posN);
-                //Toast.makeText(MoneyExchangeActivity.this, currencies.get(posN), Toast.LENGTH_LONG).show();
+                if (edtYouSend.getText().toString().equals("")) {
+                    edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+
+                }
             }
 
             @Override
@@ -92,6 +79,11 @@ public class MoneyExchangeActivity extends AppCompatActivity {
                 String pos = String.valueOf(i);
                 posN = Integer.parseInt(pos);
                 to = currencies.get(posN);
+                if (edtYouSend.getText().toString().equals("")) {
+                    edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+                }
             }
 
             @Override
@@ -105,6 +97,12 @@ public class MoneyExchangeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Swap();
+                if (edtYouSend.getText().toString().equals("")) {
+                    edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+
+                }
             }
         });
 
@@ -117,14 +115,16 @@ public class MoneyExchangeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                edtTheyGet.setText("");
+                //edtTheyGet.setText("");
 
-                if(edtYouSend.getText().toString().equals("")){
+                if (edtYouSend.getText().toString().equals("")) {
                     edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+
                 }
-                GetCurrencyConvertResponse(from, to, edtYouSend.getText().toString());
-//                edtTheyGet.setText(theyGet);
-//                Toast.makeText(MoneyExchangeActivity.this, theyGet, Toast.LENGTH_LONG).show();
+
+
             }
 
             @Override
@@ -137,7 +137,7 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GetCurrencyConvertResponse();
+
             }
         });
 
@@ -149,6 +149,42 @@ public class MoneyExchangeActivity extends AppCompatActivity {
             }
         });
 
+        // Button UPDATE DATA
+        btnUpdateData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateData();
+            }
+        });
+
+    }
+
+    private void DoConvertAndShowResult(String from, String to, Double amount) {
+        Double rateUSDTo = 1.0;
+        Double rateUSDFrom = 1.0;
+        DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(8);
+
+        for (int i = 0; i < currencyUnits.size(); i++) {
+            if (currencyUnits.get(i).getName().equals(to))
+                rateUSDTo = currencyUnits.get(i).getValue();
+        }
+
+
+        if (from.equals("USD")) {
+            theyGet = df.format(Math.round( (amount * rateUSDTo) * 100.0) / 100.0);
+        }
+        else {
+            for (int i = 0; i < currencyUnits.size(); i++) {
+                if (currencyUnits.get(i).getName().equals(from))
+                    rateUSDFrom = currencyUnits.get(i).getValue();
+            }
+            Double rateToFrom = rateUSDTo/rateUSDFrom;
+            theyGet = df.format(Math.round(amount * rateToFrom * 100.0) / 100.0);
+        }
+
+
+        edtTheyGet.setText(theyGet);
     }
 
     private void Swap() {
@@ -162,13 +198,13 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         int spinnerPositionTheyGet = adapter.getPosition(to);
         snTheyGet.setSelection(spinnerPositionTheyGet);
 
-        if(edtYouSend.getText().toString().equals(""))
+        if (edtYouSend.getText().toString().equals(""))
             edtTheyGet.setText("");
-        GetCurrencyConvertResponse(from, to, edtYouSend.getText().toString());
     }
 
 
     private void adapterSpinner() {
+        adapter = new ArrayAdapter<String>(MoneyExchangeActivity.this, android.R.layout.simple_spinner_item, currencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         snYouSend.setAdapter(adapter);
         snTheyGet.setAdapter(adapter);
@@ -184,31 +220,35 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         snTheyGet.setSelection(spinnerPositionTheyGet);
     }
 
-    private void GetCurrencyConvertResponse(String from, String to, String amount) {
+
+    private void UpdateData() {
         ExchangeApi exchangeApi = Service.getExchangeApi();
-        Call<CurrencyConvert> responseCall = exchangeApi.convertCurrency(from, to, amount, Credentials.API_KEY);
+        Call<LatestUSD> responseCall = exchangeApi.updateRateLatestUSD(Credentials.API_KEY);
 
-        responseCall.enqueue(new Callback<CurrencyConvert>() {
+        responseCall.enqueue(new Callback<LatestUSD>() {
             @Override
-            public void onResponse(Call<CurrencyConvert> call, Response<CurrencyConvert> response) {
+            public void onResponse(Call<LatestUSD> call, Response<LatestUSD> response) {
                 if (response.code() == 200) {
-                    //Log.v("Tag", "The response" + response.body().toString());
+                    LatestUSD latestUSD = response.body();
 
-                    CurrencyConvert currencyConvert = response.body();
-                    theyGet = String.valueOf(currencyConvert.getResult().getResultTheyGet());
-                    edtTheyGet.setText(theyGet);
-                    //Toast.makeText(MoneyExchangeActivity.this, theyGet, Toast.LENGTH_LONG).show();
-                    //Log.v("Tag", "The result" + currencyConvert.getResult());
+                    currencyUnits = latestUSD.getConversionRates().getListCurrencies();
+                    currencies = new ArrayList<>();
+                    for (int i = 0; i < currencyUnits.size(); i++) {
+                        currencies.add(currencyUnits.get(i).getName());
+                        //Log.v("Tag", currencyUnits.get(i).getName() + " = " + currencyUnits.get(i).getValue() + ", ");
+                    }
+
+                    adapterSpinner();
                 }
             }
 
             @Override
-            public void onFailure(Call<CurrencyConvert> call, Throwable t) {
+            public void onFailure(Call<LatestUSD> call, Throwable t) {
                 Log.e("Tag", "Err");
             }
         });
-
     }
+
 
     private void initUI() {
         btnSwap = findViewById(R.id.btn_swap);
