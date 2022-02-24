@@ -178,16 +178,20 @@
             android:id="@+id/btn_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_refresh_24"
+            android:drawableTint="@color/white"
             android:layout_marginHorizontal="10dp"
-            android:text="Reset All Exchange Rate"
+            android:text="   Reset All Exchange Rate"
             android:theme="@style/AppTheme.MyButton1" />
 
         <Button
             android:id="@+id/btn_update_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_system_update_alt_24"
+            android:drawableTint="@color/white"
             android:layout_marginHorizontal="10dp"
-            android:text="Update All Exchange Rate From API"
+            android:text="   Update All Exchange Rate From API"
             android:theme="@style/AppTheme.MyButton7" />
 
         <Button
@@ -195,7 +199,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:text="Exit"
+            android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
+            android:drawableTint="@color/white"
+            android:text="   Exit"
             android:theme="@style/AppTheme.MyButton3" />
     </LinearLayout>
 

@@ -25,6 +25,8 @@ import com.xuancanhit.moneyexchangeapp.utils.Credentials;
 import com.xuancanhit.moneyexchangeapp.utils.ExchangeApi;
 
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,9 +174,16 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                edtYouSend.setText("");
+                edtTheyGet.setText("");
+
+                //Time Reset
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+
                 for (int i = 0; i < currencyUnits.size(); i++) {
                     if(!currencyUnits.get(i).getName().equals("USD"))
-                        currencyUnitViewModel.update(0.0, currencyUnits.get(i).getName());
+                        currencyUnitViewModel.update(0.0, dtf.format(now), currencyUnits.get(i).getName());
                 }
                 Toast.makeText(MoneyExchangeActivity.this, "Successfully Reset All Currency Rates", Toast.LENGTH_SHORT).show();
             }
@@ -281,11 +290,15 @@ public class MoneyExchangeActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                     LatestUSD latestUSD = response.body();
 
+                    //Time Update
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    LocalDateTime now = LocalDateTime.now();
+
                     currencyUnits = latestUSD.getConversionRates().getListCurrencies();
                     currencies = new ArrayList<>();
                     for (int i = 0; i < currencyUnits.size(); i++) {
                         //currencies.add(currencyUnits.get(i).getName());
-                        currencyUnitViewModel.update(currencyUnits.get(i).getValue(), currencyUnits.get(i).getName());
+                        currencyUnitViewModel.update(currencyUnits.get(i).getValue(), dtf.format(now), currencyUnits.get(i).getName());
                     }
 
                     adapterSpinner();
@@ -315,7 +328,7 @@ public class MoneyExchangeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LatestUSD> call, Throwable t) {
-                Toast.makeText(MoneyExchangeActivity.this, "Please check your Internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MoneyExchangeActivity.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }

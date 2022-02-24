@@ -20,8 +20,8 @@ public interface CurrencyUnitDAO {
     @Update
     void updateCurrencyUnit(CurrencyUnitDTO currencyUnit);
 
-    @Query("UPDATE currency_unit_table SET Value=:value WHERE Name = :name")
-    void update(Double value, String name);
+    @Query("UPDATE currency_unit_table SET Value=:value, TimeUpdate=:timeUpdate WHERE Name = :name")
+    void update(Double value, String timeUpdate, String name);
 
     @Delete
     void deleteCurrencyUnit(CurrencyUnitDTO currencyUnit);

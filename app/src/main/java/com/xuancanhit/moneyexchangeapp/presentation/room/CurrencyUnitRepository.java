@@ -37,9 +37,9 @@ public class CurrencyUnitRepository {
                 mCurrencyUnitDAO.updateCurrencyUnit(dto));
     }
 
-    public void update(Double value, String name) {
+    public void update(Double value, String timeUpdate, String name) {
         CurrencyUnitRoomDatabase.databaseWriteExecutor.execute(() ->
-                mCurrencyUnitDAO.update(value, name));
+                mCurrencyUnitDAO.update(value, timeUpdate, name));
     }
 
     public void deleteCurrencyUnit(CurrencyUnit currencyUnit) {

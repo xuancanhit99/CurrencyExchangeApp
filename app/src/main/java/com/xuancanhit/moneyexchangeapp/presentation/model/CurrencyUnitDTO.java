@@ -3,6 +3,7 @@ package com.xuancanhit.moneyexchangeapp.presentation.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.xuancanhit.moneyexchangeapp.models.CurrencyUnit;
@@ -19,13 +20,22 @@ public class CurrencyUnitDTO extends CurrencyUnit {
     @ColumnInfo(name = "Value")
     private Double value;
 
+    @ColumnInfo(name = "TimeUpdate")
+    private String timeUpdate;
+
     public CurrencyUnitDTO() {}
 
+    @Ignore
     public CurrencyUnitDTO(String name, Double value) {
         this.name = name;
         this.value = value;
     }
 
+    public CurrencyUnitDTO(String name, Double value, String timeUpdate) {
+        this.name = name;
+        this.value = value;
+        this.timeUpdate = timeUpdate;
+    }
 
     public int getId() {
         return id;
@@ -55,11 +65,22 @@ public class CurrencyUnitDTO extends CurrencyUnit {
         this.value = value;
     }
 
+    @Override
+    public String getTimeUpdate() {
+        return timeUpdate;
+    }
+
+    @Override
+    public void setTimeUpdate(String timeUpdate) {
+        this.timeUpdate = timeUpdate;
+    }
+
     public static CurrencyUnitDTO convertFromCurrencyUnit(CurrencyUnit currencyUnit){
         CurrencyUnitDTO dto = new CurrencyUnitDTO();
         dto.setId(currencyUnit.getId());
         dto.setName(currencyUnit.getName());
         dto.setValue(currencyUnit.getValue());
+        dto.setTimeUpdate(currencyUnit.getTimeUpdate());
         return dto;
     }
 
@@ -68,6 +89,7 @@ public class CurrencyUnitDTO extends CurrencyUnit {
         cur.setId(currencyUnit.getId());
         cur.setName(currencyUnit.getName());
         cur.setValue(currencyUnit.getValue());
+        cur.setTimeUpdate(currencyUnit.getTimeUpdate());
         return cur;
     }
 }

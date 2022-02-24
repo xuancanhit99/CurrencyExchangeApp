@@ -95,6 +95,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Curent Update Time:" />
+
+        <TextView
+            android:id="@+id/tv_currency_unit_update_current_time"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:paddingTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="Latest USD Exchange Rate:" />
@@ -103,6 +128,31 @@
             android:id="@+id/tv_currency_unit_update_latest_rate"
             android:layout_width="wrap_content"
             android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:paddingTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Latest Update Time:" />
+
+        <TextView
+            android:id="@+id/tv_currency_unit_update_latest_time"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_weight="5" />
@@ -122,23 +172,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:text="Reset"
+            android:text="   Reset"
+            android:drawableStart="@drawable/ic_baseline_refresh_24"
+            android:drawableTint="@color/white"
             android:theme="@style/AppTheme.MyButton1" />
 
         <Button
             android:id="@+id/btn_currency_unit_update_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_system_update_alt_24"
+            android:drawableTint="@color/white"
             android:layout_marginHorizontal="10dp"
-            android:text="Update Data"
+            android:text="   Update"
             android:theme="@style/AppTheme.MyButton7" />
 
         <Button
             android:id="@+id/btn_currency_unit_update_data_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
+            android:drawableTint="@color/white"
             android:layout_marginHorizontal="10dp"
-            android:text="Exit"
+            android:text="   Exit"
             android:theme="@style/AppTheme.MyButton3" />
     </LinearLayout>
 

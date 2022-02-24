@@ -35,8 +35,8 @@ public class CurrencyUnitViewModel extends AndroidViewModel {
         mCurrencyUnitRepository.updateCurrencyUnit(currencyUnit);
     }
 
-    public void update(Double value, String name) {
-        mCurrencyUnitRepository.update(value, name);
+    public void update(Double value, String timeUpdate, String name) {
+        mCurrencyUnitRepository.update(value, timeUpdate, name);
     }
 
 
