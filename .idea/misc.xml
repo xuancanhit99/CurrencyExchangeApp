@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/drawable/divider.xml" value="0.30462962962962964" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/drawable/round_button.xml" value="0.30462962962962964" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/activity_curren_unit_update_data.xml" value="0.44858156028368795" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/activity_currency_unit_update_data.xml" value="0.33" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/activity_exchange_rates_table.xml" value="0.25" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/activity_main.xml" value="0.4722222222222222" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/activity_money_exchange.xml" value="0.5" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/MoneyExchangeApp/app/src/main/res/layout/list_item_currency_unit.xml" value="0.5" />
       </map>
     </option>
   </component>

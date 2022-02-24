@@ -1,13 +1,15 @@
 package com.xuancanhit.moneyexchangeapp.models;
 
-public class CurrencyUnit {
+import java.io.Serializable;
+
+public class CurrencyUnit implements Serializable {
 
 
-
+    private int id;
     private String name;
     private Double value;
 
-    public CurrencyUnit() {
+    public CurrencyUnit()  {
     }
 
     public CurrencyUnit(String name, Double value) {
@@ -29,5 +31,13 @@ public class CurrencyUnit {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
