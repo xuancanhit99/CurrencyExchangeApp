@@ -3,7 +3,6 @@ package com.xuancanhit.moneyexchangeapp.request;
 import com.xuancanhit.moneyexchangeapp.utils.Credentials;
 import com.xuancanhit.moneyexchangeapp.utils.ExchangeApi;
 
-import okhttp3.internal.connection.Exchange;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

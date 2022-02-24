@@ -1,18 +1,24 @@
 package com.xuancanhit.moneyexchangeapp.utils;
 
-import com.xuancanhit.moneyexchangeapp.respone.CurrencyConvert;
+import com.xuancanhit.moneyexchangeapp.models.LatestUSD;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Path;
 
 public interface ExchangeApi {
 
+
+    //From USD
+    @GET("{api_key}/latest/USD")
+    Call<LatestUSD> updateRateLatestUSD(
+            @Path("api_key") String api_key);
+
     //Convert
-    @GET("convert?")
-    Call<CurrencyConvert> convertCurrency(
-            @Query("from") String from,
-            @Query("to") String to,
-            @Query("amount") String amount,
-            @Query("api_key") String api_key);
+//    @GET("latest/{}")
+//    Call<CurrencyConvert> convertCurrency(
+//            @Query("from") String from,
+//            @Query("to") String to,
+//            @Query("amount") String amount,
+//            @Query("api_key") String api_key);
 }

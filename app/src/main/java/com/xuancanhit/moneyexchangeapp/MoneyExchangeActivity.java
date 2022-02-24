@@ -1,32 +1,32 @@
 package com.xuancanhit.moneyexchangeapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.xuancanhit.moneyexchangeapp.models.CurrencyUnit;
+import com.xuancanhit.moneyexchangeapp.models.LatestUSD;
+import com.xuancanhit.moneyexchangeapp.presentation.model.CurrencyUnitDTO;
 import com.xuancanhit.moneyexchangeapp.request.Service;
-import com.xuancanhit.moneyexchangeapp.respone.CurrencyConvert;
+import com.xuancanhit.moneyexchangeapp.ui.view.viewmodel.CurrencyUnitViewModel;
 import com.xuancanhit.moneyexchangeapp.utils.Credentials;
 import com.xuancanhit.moneyexchangeapp.utils.ExchangeApi;
 
-import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,11 +41,15 @@ public class MoneyExchangeActivity extends AppCompatActivity {
     private List<String> currencies;
     int posN;
 
-    String from, to;
+    String from = "", to = "";
     String theyGet;
+
 
     ArrayAdapter<String> adapter;
 
+    List<CurrencyUnit> currencyUnits;
+
+    CurrencyUnitViewModel currencyUnitViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +57,35 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_money_exchange);
         initUI();
 
-        // Currencies
-        currencies = Arrays.asList("AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM",
-                "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BZD", "CAD",
-                "CDF", "CHF", "CLF", "CLP", "CNH", "CNY", "COP", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD",
-                "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD",
-                "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY",
-                "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL",
-                "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR",
-                "MZN", "NAD", "NGN", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG",
-                "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD",
-                "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD",
-                "UYU", "UZS", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW");
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, currencies);
+        currencyUnitViewModel = new ViewModelProvider(this).get(CurrencyUnitViewModel.class);
 
-        // Spinner
-        adapterSpinner();
+
+        // Get Live List for show Spinner
+        currencyUnitViewModel.getAllCurrencyUnits().observe(this, new Observer<List<CurrencyUnitDTO>>() {
+            @Override
+            public void onChanged(List<CurrencyUnitDTO> currencyList) {
+                currencyUnits = new ArrayList<>();
+                if (currencyList != null) {
+                    //Log.d("Tag", currency.get(0).getName());
+                    for (int i = 0; i < currencyList.size(); i++) {
+                        currencyUnits.add(CurrencyUnitDTO.convertFromCurrencyUnitDTO(currencyList.get(i)));
+                        //Log.d("Tag", currencyUnits.get(i).getName());
+                    }
+
+                    currencies = new ArrayList<>();
+                    for (int i = 0; i < currencyUnits.size(); i++) {
+                        currencies.add(currencyUnits.get(i).getName());
+                        //Log.v("Tag", currencyUnits.get(i).getName() + " = " + currencyUnits.get(i).getValue() + ", ");
+                    }
+                    adapterSpinner();
+                }
+            }
+        });
+
+
+        //UpdateData();
+
         snYouSend.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,7 +93,12 @@ public class MoneyExchangeActivity extends AppCompatActivity {
                 posN = Integer.parseInt(pos);
                 //
                 from = currencies.get(posN);
-                //Toast.makeText(MoneyExchangeActivity.this, currencies.get(posN), Toast.LENGTH_LONG).show();
+                if (edtYouSend.getText().toString().equals("")) {
+                    edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+
+                }
             }
 
             @Override
@@ -92,6 +113,11 @@ public class MoneyExchangeActivity extends AppCompatActivity {
                 String pos = String.valueOf(i);
                 posN = Integer.parseInt(pos);
                 to = currencies.get(posN);
+                if (edtYouSend.getText().toString().equals("")) {
+                    edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+                }
             }
 
             @Override
@@ -104,7 +130,15 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         btnSwap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Swap();
+                if (!from.equals("") && !to.equals("")) {
+                    Swap();
+                    if (edtYouSend.getText().toString().equals("")) {
+                        edtTheyGet.setText("");
+                    } else {
+                        DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
+                    }
+                }
+
             }
         });
 
@@ -117,14 +151,15 @@ public class MoneyExchangeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                edtTheyGet.setText("");
+                //edtTheyGet.setText("");
 
-                if(edtYouSend.getText().toString().equals("")){
+                if (edtYouSend.getText().toString().equals("")) {
                     edtTheyGet.setText("");
+                } else {
+                    DoConvertAndShowResult(from, to, Double.parseDouble(edtYouSend.getText().toString()));
                 }
-                GetCurrencyConvertResponse(from, to, edtYouSend.getText().toString());
-//                edtTheyGet.setText(theyGet);
-//                Toast.makeText(MoneyExchangeActivity.this, theyGet, Toast.LENGTH_LONG).show();
+
+
             }
 
             @Override
@@ -137,7 +172,11 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //GetCurrencyConvertResponse();
+                for (int i = 0; i < currencyUnits.size(); i++) {
+                    if(!currencyUnits.get(i).getName().equals("USD"))
+                        currencyUnitViewModel.update(0.0, currencyUnits.get(i).getName());
+                }
+                Toast.makeText(MoneyExchangeActivity.this, "Successfully Reset All Currency Rates", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -149,6 +188,53 @@ public class MoneyExchangeActivity extends AppCompatActivity {
             }
         });
 
+        // Button UPDATE DATA
+        btnUpdateData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateData();
+            }
+        });
+
+        //Button View Change Rate
+        btnViewExchangeRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MoneyExchangeActivity.this, ExchangeRatesTableActivity.class));
+                finish();
+            }
+        });
+
+    }
+
+    private void DoConvertAndShowResult(String from, String to, Double amount) {
+        Double rateUSDTo = 1.0;
+        Double rateUSDFrom = 1.0;
+        DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(8);
+
+
+        for (int i = 0; i < currencyUnits.size(); i++) {
+            if (currencyUnits.get(i).getName().equals(to)) {
+                rateUSDTo = currencyUnits.get(i).getValue();
+            }
+        }
+
+
+        if (from.equals("USD")) {
+            theyGet = df.format(Math.round((amount * rateUSDTo) * 100.0) / 100.0);
+        } else {
+            for (int i = 0; i < currencyUnits.size(); i++) {
+                if (currencyUnits.get(i).getName().equals(from))
+                    rateUSDFrom = currencyUnits.get(i).getValue();
+            }
+            Double rateToFrom = rateUSDTo / rateUSDFrom;
+            theyGet = df.format(Math.round(amount * rateToFrom * 100.0) / 100.0);
+            //Log.d("Tag", theyGet);
+        }
+
+
+        edtTheyGet.setText(theyGet);
     }
 
     private void Swap() {
@@ -162,13 +248,13 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         int spinnerPositionTheyGet = adapter.getPosition(to);
         snTheyGet.setSelection(spinnerPositionTheyGet);
 
-        if(edtYouSend.getText().toString().equals(""))
+        if (edtYouSend.getText().toString().equals(""))
             edtTheyGet.setText("");
-        GetCurrencyConvertResponse(from, to, edtYouSend.getText().toString());
     }
 
 
     private void adapterSpinner() {
+        adapter = new ArrayAdapter<String>(MoneyExchangeActivity.this, android.R.layout.simple_spinner_item, currencies);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         snYouSend.setAdapter(adapter);
         snTheyGet.setAdapter(adapter);
@@ -184,31 +270,56 @@ public class MoneyExchangeActivity extends AppCompatActivity {
         snTheyGet.setSelection(spinnerPositionTheyGet);
     }
 
-    private void GetCurrencyConvertResponse(String from, String to, String amount) {
+
+    private void UpdateData() {
         ExchangeApi exchangeApi = Service.getExchangeApi();
-        Call<CurrencyConvert> responseCall = exchangeApi.convertCurrency(from, to, amount, Credentials.API_KEY);
+        Call<LatestUSD> responseCall = exchangeApi.updateRateLatestUSD(Credentials.API_KEY);
 
-        responseCall.enqueue(new Callback<CurrencyConvert>() {
+        responseCall.enqueue(new Callback<LatestUSD>() {
             @Override
-            public void onResponse(Call<CurrencyConvert> call, Response<CurrencyConvert> response) {
+            public void onResponse(Call<LatestUSD> call, Response<LatestUSD> response) {
                 if (response.code() == 200) {
-                    //Log.v("Tag", "The response" + response.body().toString());
+                    LatestUSD latestUSD = response.body();
 
-                    CurrencyConvert currencyConvert = response.body();
-                    theyGet = String.valueOf(currencyConvert.getResult().getResultTheyGet());
-                    edtTheyGet.setText(theyGet);
-                    //Toast.makeText(MoneyExchangeActivity.this, theyGet, Toast.LENGTH_LONG).show();
-                    //Log.v("Tag", "The result" + currencyConvert.getResult());
+                    currencyUnits = latestUSD.getConversionRates().getListCurrencies();
+                    currencies = new ArrayList<>();
+                    for (int i = 0; i < currencyUnits.size(); i++) {
+                        //currencies.add(currencyUnits.get(i).getName());
+                        currencyUnitViewModel.update(currencyUnits.get(i).getValue(), currencyUnits.get(i).getName());
+                    }
+
+                    adapterSpinner();
+                    Toast.makeText(MoneyExchangeActivity.this, "Successfully Updated All Currency Rates From API", Toast.LENGTH_SHORT).show();
+
                 }
+                else if(response.code() == 400){
+                    Toast.makeText(MoneyExchangeActivity.this, "Bad Request", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.code() == 401){
+                    Toast.makeText(MoneyExchangeActivity.this, "Not Authorized", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.code() == 403){
+                    Toast.makeText(MoneyExchangeActivity.this, "Forbidden", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.code() == 404){
+                    Toast.makeText(MoneyExchangeActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.code() == 429){
+                    Toast.makeText(MoneyExchangeActivity.this, "Rate limit exceeded", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(MoneyExchangeActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
-            public void onFailure(Call<CurrencyConvert> call, Throwable t) {
-                Log.e("Tag", "Err");
+            public void onFailure(Call<LatestUSD> call, Throwable t) {
+                Toast.makeText(MoneyExchangeActivity.this, "Please check your Internet connection", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
 
     private void initUI() {
         btnSwap = findViewById(R.id.btn_swap);

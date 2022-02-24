@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyExchangeApp">
         <activity
+            android:name=".CurrencyUnitUpdateDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExchangeRatesTableActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoneyExchangeActivity"
             android:exported="false" />
         <activity

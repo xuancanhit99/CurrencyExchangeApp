@@ -1,6 +1,6 @@
 package com.xuancanhit.moneyexchangeapp.utils;
 
 public class Credentials {
-    public static final String BASE_URL = "https://api.fastforex.io/";
-    public static final String API_KEY = "4a92e10971-1e90d19e9c-r76xiz";
+    public static final String BASE_URL = "https://v6.exchangerate-api.com/v6/";
+    public static final String API_KEY = "1d8267b691b4282e3708b1fa";
 }
