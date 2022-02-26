@@ -25,8 +25,6 @@ public class CurrencyUnitViewModel extends AndroidViewModel {
         return mAllCurrencyUnits;
     }
 
-
-
     public void insertCurrencyUnit(CurrencyUnit currencyUnit) {
         mCurrencyUnitRepository.insertCurrencyUnit(currencyUnit);
     }

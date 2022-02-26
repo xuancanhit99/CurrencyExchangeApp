@@ -8,8 +8,7 @@ import retrofit2.http.Path;
 
 public interface ExchangeApi {
 
-
-    //From USD
+    //Rate USD
     @GET("{api_key}/latest/USD")
     Call<LatestUSD> updateRateLatestUSD(
             @Path("api_key") String api_key);

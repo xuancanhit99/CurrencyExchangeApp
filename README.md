@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <a>
-    <img src="images/logo.png" alt="Logo" width="100" height="100">
+    <img src="images/MIREA_Gerb_Colour.png" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">Currency Converter Application</h3>
@@ -65,7 +65,25 @@ Support Android 5.0 and above.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-How to play?
+
+Application main interface:
+[![Application main interface][img]]
+
+List of currencies:
+[![List of currencies][img_1]]
+
+To begin, we press the RESET ALL EXCHANGE RATE button to reset.
+[![Reset all currencies][img_2]]
+
+Then click the VIEW EXCHANGE RATES button to view the current exchange rate table.
+All rates are now 0.0 by default.
+The local SQLite database has been reset.
+
+[[img_3]. [img_4]]
+
+
+
+
 1. 15 Puzzle - Пятнашки
     * ![english] When you press the "Go to game" button, a 3x3 playing field with figures standing on it will appear in front of you. Your task is to move the upper pieces down, and the upper ones up, the game is considered over if all the pieces are rearranged. Also, your moves will be shown in the table on the side.
     * ![russian] При нажатии кнопки "Перейти к игре" перед вами появится игровое поле 3х3 со стоящими на нем фигурами. Ваша задача заключается в том, чтобы перенести верхние фигуры вниз, а верхние вверх, игра считается оконченной если переставлены все фигуры.Так же, в таблице сбоку будут показываться ваши ходы.
@@ -84,5 +102,16 @@ How to play?
 
 [english]: https://img.shields.io/badge/English-EN-brightgreen
 [russian]: https://img.shields.io/badge/Russian-RU-brightgreen
-[product-screenshot]: images/15puzzle.png
-[product-screenshot1]: images/minichess.png
+[img]: images/img.png
+[img_1]: images/img_1.png
+[img_2]: images/img_2.png
+[img_3]: images/img_3.png
+[img_4]: images/img_4.png
+[img_5]: images/img_5.png
+[img_6]: images/img_6.png
+[img_7]: images/img_7.png
+[img_8]: images/img_8.png
+[img_9]: images/img_9.png
+[img_10]: images/img_10.png
+[img_11]: images/img_11.png
+
