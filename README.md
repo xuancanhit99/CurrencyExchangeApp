@@ -69,38 +69,38 @@ Support Android 5.0 and above.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Application main interface:
+* Application main interface:
 
 ![img]
 
-List of currencies:
+* List of currencies:
 
 ![img_1]
 
-To begin, we press the RESET ALL EXCHANGE RATE button to reset.
+* To begin, we press the RESET ALL EXCHANGE RATE button to reset.
 
 ![img_2]
 
-Then click the VIEW EXCHANGE RATES button to view the current exchange rate table.
-All rates are now 0.0 by default.
-The local SQLite database has been reset.
+* Then click the VIEW EXCHANGE RATES button to view the current exchange rate table.
+* All rates are now 0.0 by default.
+* The local SQLite database has been reset.
 
 ![img_3]![img_4]
 
-We can click the UPDATE ALL EXCHANGE RATE FROM API button to update all rates from the API.
-Updated local SQLite database. We can do the conversion without internet.
+* We can click the UPDATE ALL EXCHANGE RATE FROM API button to update all rates from the API.
+* Updated local SQLite database. We can do the conversion without internet.
 
 ![img_5]![img_6]
 
-Return to the main window and perform the conversion.
+* Return to the main window and perform the conversion.
 
 ![img_7]
 
-Press the SWAP button to swap currencies.
+* Press the SWAP button to swap currencies.
 
 ![img_8]
 
-If the user wants to select the currency they want to store on their offline device:
+* If the user wants to select the currency they want to store on their offline device:
 1. Press the RESET ALL EXCHANGE button to reset the exchange rate table.
 
 ![img_9]
