@@ -105,6 +105,7 @@ If the user wants to select the currency they want to store on their offline dev
 2. Then click on the currency whose exchange rate you want to update, here I choose AED.
 
 ![img_10]
+
 3. Then click UPDATE to update the AED exchange rate.
 
 ![img_11]
