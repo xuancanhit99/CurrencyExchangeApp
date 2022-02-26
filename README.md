@@ -71,9 +71,11 @@ Application main interface:
 ![img]
 
 List of currencies:
+
 ![img_1]
 
 To begin, we press the RESET ALL EXCHANGE RATE button to reset.
+
 ![img_2]
 
 Then click the VIEW EXCHANGE RATES button to view the current exchange rate table.
@@ -82,18 +84,34 @@ The local SQLite database has been reset.
 
 ![img_3]![img_4]
 
+We can click the UPDATE ALL EXCHANGE RATE FROM API button to update all rates from the API.
+Updated local SQLite database. We can do the conversion without internet.
 
+![img_5]![img_6]
 
+Return to the main window and perform the conversion.
 
-1. 15 Puzzle - Пятнашки
-    * ![english] When you press the "Go to game" button, a 3x3 playing field with figures standing on it will appear in front of you. Your task is to move the upper pieces down, and the upper ones up, the game is considered over if all the pieces are rearranged. Also, your moves will be shown in the table on the side.
-    * ![russian] При нажатии кнопки "Перейти к игре" перед вами появится игровое поле 3х3 со стоящими на нем фигурами. Ваша задача заключается в том, чтобы перенести верхние фигуры вниз, а верхние вверх, игра считается оконченной если переставлены все фигуры.Так же, в таблице сбоку будут показываться ваши ходы.
-2. Mini Chess - Переставь Фигуры
-    * ![english] When you press the "Go to game" button, you will see a 4x4 playing field with numbers from 1 to 15 standing on it (in random order). Your task is to restore the order of the numbers.
-    * ![russian] При нажатии кнопки "Перейти к игре" перед вами появится игровое поле 4х4 со стоящими на нем числами от 1 до 15 (в случайном порядке). Ваша задача восстановить порядок чисел.
+![img_7]
 
-    
+Press the SWAP button to swap currencies.
 
+![img_8]
+
+If the user wants to select the currency they want to store on their offline device:
+1. Press the RESET ALL EXCHANGE button to reset the exchange rate table.
+
+![img_9]
+
+2. Then click on the currency whose exchange rate you want to update, here I choose AED.
+
+![img_10]
+3. Then click UPDATE to update the AED exchange rate.
+
+![img_11]
+
+4. Press the EXIT button and browse through the list, the exchange rate will be updated for AED only.
+
+![img_12]![img_13]
 
 
     
@@ -101,8 +119,6 @@ The local SQLite database has been reset.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[english]: https://img.shields.io/badge/English-EN-brightgreen
-[russian]: https://img.shields.io/badge/Russian-RU-brightgreen
 [img]: images/img.png
 [img_1]: images/img_1.png
 [img_2]: images/img_2.png
@@ -115,4 +131,9 @@ The local SQLite database has been reset.
 [img_9]: images/img_9.png
 [img_10]: images/img_10.png
 [img_11]: images/img_11.png
+[img_12]: images/img_12.png
+[img_13]: images/img_13.png
+[img_14]: images/img_14.png
+[img_15]: images/img_15.png
+
 
