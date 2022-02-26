@@ -67,13 +67,13 @@ Support Android 5.0 and above.
 ## Usage
 
 Application main interface:
-[![Application main interface][img]]
+[[img]]
 
 List of currencies:
-[![List of currencies][img_1]]
+[[img_1]]
 
 To begin, we press the RESET ALL EXCHANGE RATE button to reset.
-[![Reset all currencies][img_2]]
+[![img_2]]
 
 Then click the VIEW EXCHANGE RATES button to view the current exchange rate table.
 All rates are now 0.0 by default.
