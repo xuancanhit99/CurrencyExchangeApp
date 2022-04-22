@@ -7,7 +7,6 @@
   <h3 align="center">Currency Converter Application</h3>
 
   <p align="center">
-    2 mini games written on Java platform: 15 puzzle & mini chess
     <br />
     <a href="https://github.com/xuancanhit99/CurrencyExchangeApp"><strong>Explore the docs »</strong></a>
     <br />
