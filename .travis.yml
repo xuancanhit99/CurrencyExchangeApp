@@ -1,7 +1,5 @@
 language: android
-jdk: openjdk11
-env:
-  - JAVA_OPTS="-XX:+IgnoreUnrecognizedVMOptions --add-modules java.xml.bind"
+jdk: openjdk8
 android:
   components:
     - tools
