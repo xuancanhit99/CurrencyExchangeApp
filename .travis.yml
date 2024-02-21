@@ -4,13 +4,9 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-32.0.0
-    - android-32
-    - extra-android-m2repository
-    - extra-google-google_play_services
-    - extra-google-m2repository
 before_install:
-  - yes | sdkmanager --update
+  - yes | sdkmanager --install 'build-tools;32.0.0' 'platforms;android-32'
+  - yes | sdkmanager --licenses
 before_script:
   - chmod +x gradlew
 script:
